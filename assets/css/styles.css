@@ -6675,3 +6675,24 @@ body {
     linear-gradient(180deg, rgba(6, 33, 75, 0.6) 0%, rgba(6, 33, 75, 0.08) 22%, transparent 60%, rgba(6, 33, 75, 0.35) 88%, rgba(6, 33, 75, 0.2) 100%),
     linear-gradient(90deg, rgba(4, 22, 49, 0.86) 0%, rgba(6, 33, 75, 0.64) 30%, rgba(6, 33, 75, 0.2) 56%, rgba(6, 33, 75, 0.04) 76%);
 }
+
+/* Simulateur : carte droite, sans inclinaison 3D */
+.sim-stage {
+  perspective: none;
+}
+.sim,
+.sim:hover {
+  transform: none;
+}
+
+/* Étapes : transitions plus rapides */
+.steps--live .steps__line span,
+.journey__runner {
+  transition-duration: 420ms;
+}
+.jpanel.is-active {
+  animation-duration: 320ms;
+}
+.steps--live .num {
+  transition-duration: 250ms;
+}

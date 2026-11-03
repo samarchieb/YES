@@ -854,7 +854,7 @@
     // Lecture automatique, une seule fois, quand la section apparaît
     const play = () => {
       if (userTook || current >= tabs.length - 1) return;
-      autoTimer = setTimeout(() => { show(current + 1); play(); }, 2400);
+      autoTimer = setTimeout(() => { show(current + 1); play(); }, 1500);
     };
     show(0);
     if (!reduced) {

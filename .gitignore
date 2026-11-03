@@ -1,0 +1,6 @@
+# Documents internes de l'entreprise (ne pas publier)
+*.docx
+*.pptx
+01_logo_YES_carre.png
+# Réglages locaux de l'outil de design
+.impeccable/

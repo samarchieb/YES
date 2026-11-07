@@ -988,10 +988,10 @@
     moduleWc: 565,
     m2PerKwc: 5.5,
     profiles: [
-      { id: "maison", label: "Maison", hint: "Toiture ou terrasse d'une maison", min: 10, max: 150, value: 30 },
-      { id: "commerce", label: "Commerce", hint: "Toiture d'une pharmacie, d'un café, d'une boutique", min: 20, max: 400, value: 60 },
-      { id: "entreprise", label: "Entreprise", hint: "Toiture industrielle ou tertiaire", min: 100, max: 3000, value: 550 },
-      { id: "pompage", label: "Pompage", hint: "Champ solaire pour votre forage", min: 20, max: 600, value: 120 },
+      { id: "maison", label: "Maison", min: 10, max: 150, value: 30 },
+      { id: "commerce", label: "Commerce", min: 20, max: 400, value: 60 },
+      { id: "entreprise", label: "Entreprise", min: 100, max: 3000, value: 550 },
+      { id: "pompage", label: "Pompage", min: 20, max: 600, value: 120 },
     ],
   };
   const DAY_START = 6;
@@ -1053,10 +1053,9 @@
     kw: $("[data-sim-kw]", sim),
     clock: $("[data-sim-clock]", sim),
     area: $("[data-sim-area-out]", sim),
-    hint: $("[data-sim-hint]", sim),
     kwc: $("[data-sim-kwc]", sim),
     modules: $("[data-sim-modules]", sim),
-    yearly: $("[data-sim-yearly]", sim),
+    daily: $("[data-sim-daily]", sim),
   };
   const state = { profile: 0, areas: SIM.profiles.map((p) => p.value), hour: 10.25, playing: !reduced };
 
@@ -1096,10 +1095,10 @@
     const a = state.areas[state.profile];
     const kwc = a / SIM.m2PerKwc;
     const modules = Math.round((kwc * 1000) / SIM.moduleWc);
-    const yearly = kwc * SIM.yieldKwhPerKwc;
+    const daily = (kwc * SIM.yieldKwhPerKwc) / 365; // moyenne sur l'année
     const q = quarter(state.hour);
     const instant = kwc * 0.8 * solar(q);
-    const yearlyLabel = yearly >= 1000 ? `${fmt1.format(yearly / 1000)} MWh` : `${Math.round(yearly)} kWh`;
+    const dailyLabel = daily >= 1000 ? `${fmt1.format(daily / 1000)} MWh` : daily >= 100 ? `${fmtInt.format(Math.round(daily))} kWh` : `${fmt1.format(daily)} kWh`;
     out.kw.textContent = instant < 0.05 ? "0" : fmt1.format(instant);
     out.clock.textContent = clock(q);
     hourIn.value = String(q);
@@ -1110,10 +1109,10 @@
     areaIn.style.setProperty("--fill", `${((a - p.min) / (p.max - p.min)) * 100}%`);
     out.kwc.textContent = `${fmt1.format(kwc)} kWc`;
     out.modules.textContent = fmtInt.format(modules);
-    out.yearly.textContent = yearlyLabel;
+    out.daily.textContent = dailyLabel;
     // Demande d'étude pré-remplie avec la simulation
     const subject = `Demande d'étude solaire – ${p.label}`;
-    const body = `Bonjour,\n\nJe souhaite recevoir une étude précise.\n\nSimulation : ${p.label}, ${a} m², ${fmt1.format(kwc)} kWc, ${modules} panneaux, environ ${yearlyLabel}/an.\n\nNom & prénom :\nTéléphone :\nGouvernorat :\n`;
+    const body = `Bonjour,\n\nJe souhaite recevoir une étude précise.\n\nSimulation : ${p.label}, ${a} m², ${fmt1.format(kwc)} kWc, ${modules} panneaux, environ ${dailyLabel}/jour en moyenne.\n\nNom & prénom :\nTéléphone :\nGouvernorat :\n`;
     cta.href = `mailto:contact@yellowenergysaving.pro?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
   function renderProfile() {
@@ -1126,7 +1125,6 @@
     areaIn.max = p.max;
     areaIn.step = p.max > 1000 ? 50 : 5;
     areaIn.value = state.areas[state.profile];
-    out.hint.textContent = p.hint;
     renderNumbers();
   }
   areaIn.addEventListener("input", () => {

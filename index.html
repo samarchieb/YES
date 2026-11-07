@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" href="assets/img/logo-yes.png" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=3" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=4" />
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -129,13 +129,12 @@
             <div class="sim__area">
               <div class="sim__row"><label for="sim-area">Surface disponible</label><strong data-sim-area-out>30 m²</strong></div>
               <input id="sim-area" type="range" class="range" data-sim-area />
-              <p class="sim__hint" data-sim-hint>Toiture ou terrasse d'une maison</p>
             </div>
 
             <dl class="sim__stats">
               <div><dt>Puissance</dt><dd data-sim-kwc>5,5 kWc</dd></div>
               <div><dt>Panneaux</dt><dd data-sim-modules>10</dd></div>
-              <div><dt>Production / an</dt><dd data-sim-yearly>8,7 MWh</dd></div>
+              <div><dt>Production / jour</dt><dd data-sim-daily>23,9 kWh</dd></div>
             </dl>
 
             <a href="#contact" class="sim__cta" data-sim-cta>
@@ -259,7 +258,7 @@
 
     <!-- ================= Pourquoi ================= -->
     <section class="why" id="apropos" aria-labelledby="why-title">
-      <div class="why__photo"><img src="assets/img/technicien.jpg" alt="" width="324" height="204" loading="lazy" />
+      <div class="why__photo"><img src="assets/img/why-toiture.jpg" alt="" width="960" height="720" loading="lazy" />
         <p class="why__badge" aria-live="polite"><strong data-why-v>1 équipe</strong><span data-why-l>de l’étude au SAV</span></p>
       </div>
       <div class="container why__inner">
@@ -424,27 +423,32 @@
             <li><button type="button" role="tab" aria-selected="true" aria-controls="showcase-view"
               data-img="assets/img/real-industrie.png" data-alt="Toiture industrielle couverte de 88 modules bifaciaux"
               data-facts="Lieu|Z.I. El Mghira;;Puissance|49,72 kWc;;Production|79 581 kWh/an">
-              <span class="plist__num">01</span><span class="plist__name">Toiture industrielle<small>Entreprises</small></span><span class="plist__arrow" aria-hidden="true"></span>
-            </button></li>
-            <li><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="showcase-view"
-              data-img="assets/img/real-concession.png" data-alt="Toiture d'une concession automobile équipée de panneaux solaires"
-              data-facts="Lieu|Z.I. Mghira;;Puissance|35,52 kWc;;Secteur|Automobile">
-              <span class="plist__num">02</span><span class="plist__name">Concession automobile<small>Entreprises</small></span><span class="plist__arrow" aria-hidden="true"></span>
+              <span class="plist__num">01</span><span class="plist__name">Projet industriel<small>Toiture d'entreprise</small></span><span class="plist__arrow" aria-hidden="true"></span>
             </button></li>
             <li><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="showcase-view"
               data-img="assets/img/real-villa.jpg" data-alt="Panneaux solaires posés par YES sur la terrasse d'une villa"
               data-facts="Type|Toiture terrasse;;Client|Particulier;;Secteur|Résidentiel">
-              <span class="plist__num">03</span><span class="plist__name">Villa avec toiture terrasse<small>Résidentiel</small></span><span class="plist__arrow" aria-hidden="true"></span>
+              <span class="plist__num">02</span><span class="plist__name">Projet résidentiel<small>Villa avec toiture terrasse</small></span><span class="plist__arrow" aria-hidden="true"></span>
             </button></li>
             <li><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="showcase-view"
-              data-img="assets/img/real-agricole.jpg" data-alt="Installation solaire au sol sur une exploitation agricole"
-              data-facts="Type|Centrale au sol;;Usage|Pompage solaire;;Secteur|Agriculture">
-              <span class="plist__num">04</span><span class="plist__name">Centrale au sol<small>Agriculture</small></span><span class="plist__arrow" aria-hidden="true"></span>
+              data-img="assets/img/real-concession.png" data-alt="Toiture d'une concession automobile équipée de panneaux solaires"
+              data-facts="Lieu|Z.I. Mghira;;Puissance|35,52 kWc;;Production|53 635 kWh/an">
+              <span class="plist__num">03</span><span class="plist__name">Projet tertiaire intégré<small>Concession automobile</small></span><span class="plist__arrow" aria-hidden="true"></span>
             </button></li>
             <li><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="showcase-view"
-              data-img="assets/img/real-station.jpg" data-alt="Ombrière solaire d'une station-service"
-              data-facts="Type|Ombrière solaire;;Secteur|Station-service;;Usage|Production solaire">
-              <span class="plist__num">05</span><span class="plist__name">Ombrière de station-service<small>Stations</small></span><span class="plist__arrow" aria-hidden="true"></span>
+              data-img="assets/img/real-pompage.jpg" data-alt="Panneaux solaires posés au sol au milieu des oliviers"
+              data-facts="Usage|Irrigation;;Pompes|Jusqu'à 20 CV;;Énergie|Soleil">
+              <span class="plist__num">04</span><span class="plist__name">Projet de pompage solaire au fil du soleil<small>Agriculture</small></span><span class="plist__arrow" aria-hidden="true"></span>
+            </button></li>
+            <li><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="showcase-view"
+              data-img="assets/img/real-secours.jpg" data-alt="Batteries lithium et onduleur installés au mur pour le secours électrique"
+              data-facts="Bascule|Moins de 20 ms;;Batteries|Lithium;;Usage|Coupures STEG">
+              <span class="plist__num">05</span><span class="plist__name">Projet de secours par batteries (BESS)<small>Maisons, pharmacies, commerces</small></span><span class="plist__arrow" aria-hidden="true"></span>
+            </button></li>
+            <li><button type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="showcase-view"
+              data-img="assets/img/real-borne.jpg" data-alt="Bornes de recharge murales pour voitures électriques sur un parking"
+              data-facts="Site|Non raccordé;;Alimentation|Batteries;;Recharge|Bornes RAEDIAN">
+              <span class="plist__num">06</span><span class="plist__name">Projet de site isolé avec borne de recharge<small>Hors réseau</small></span><span class="plist__arrow" aria-hidden="true"></span>
             </button></li>
           </ol>
 
@@ -695,6 +699,6 @@
     <p class="pfoot__mark" aria-hidden="true">YES</p>
   </footer>
 
-  <script src="assets/js/main.js?v=3" defer></script>
+  <script src="assets/js/main.js?v=4" defer></script>
 </body>
 </html>
